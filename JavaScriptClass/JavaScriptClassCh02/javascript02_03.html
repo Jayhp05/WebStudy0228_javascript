@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 따옴표 처리와 템플릿 문자열</title>
+    <script>
+        // 그는 나에게 "조심해서 잘 가~"라고 말했다.
+        document.write('그는 나에게 "조심해서 잘 가~"라고 말했다.<br>');
+        document.write('그는 나에게 \"조심해서 잘 가~\"라고 말했다.<br>');
+        document.write("You're my Sunshine.<br>");
+
+        document.write(`영화 '기생충'은 한국 역사상 '아카데미상'을 받은 최초의 영화이다.<br>`);
+
+        let name = "홍길동";
+        let year = 2023
+        let month = 7
+        let day = 28
+        let hour = 10
+        let minute = 30
+
+        document.write(name + "님의 예약 시간은 " + year + "년 " + month + "월 " + day + "일 " + hour + "시간 " + minute + "분 입니다.<br>")
+
+        // (Template strings)을 사용하면 가독성도 뛰어나고 편리하게 문자열을 만들 수 있다. 
+        // 템플릿 문자열은 백틱으로 출력할 문자열을 감싸고 그 안에서 ${변수}와 같이 사용한다.
+        document.write(`${name}님의 예약 시간은 ${year}년 ${month}월 ${day}일 ${hour}시간 ${minute}분 입니다. <br>`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
