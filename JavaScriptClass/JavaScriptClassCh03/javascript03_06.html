@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>삼 항 연산자</title>
+    <script>
+        let input = prompt("숫자를 입력해 주세요.", 0);
+
+        let result = input % 2 == 0 ? "짝수" : "홀수";
+        console.log(input + "은 " + result);
+
+        // 삼 항 연산자는 다음과 같이 여러 번 중첩하여 사용할 수 있다.
+        result = input > 0 ? "양수임" :
+                    input == 0 ? "0임" : 
+                        input < 0 ? "음수임" : "값이 입력되지 않음"
+
+        console.log(input + "은 " + result);
+    </script>
+</head>
+<body>
+</body>
+</html>

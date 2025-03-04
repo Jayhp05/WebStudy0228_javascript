@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>if else 조건문</title>
+    <script>
+        function closeWindow() {
+            let input = confirm("프로그램을 종료 하시겠습니까?");
+
+            if(input) {
+                window.close();
+            }
+            else {
+                alert("그럴 줄 알았어요 ^_^");
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="현재 창 닫기" onclick="closeWindow();">
+</body>
+</html>
