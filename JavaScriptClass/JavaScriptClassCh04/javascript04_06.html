@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>break와 continue</title>
+    <script>
+        let i = 0;
+
+        while(1) {
+            if(!confirm('계속 하시겠습니까? - while')) {
+                alert('while 문 ' + i + '번 실행 후 종료!');
+
+                break;
+            }
+            else {
+                continue;
+            }
+            i++;
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>for 문과 if문을 이용한 약수 구하기</title>
+    <script>
+        const N = 120;
+        let cnt = 0;
+        let divisor = " ";
+
+        for(let i = 1; i <= 120; i++) {
+            if(N % i == 0) {
+                cnt++;
+                divisor += i + (i < 120 ? ", " : " ");
+            }
+        }
+
+        document.write(`${N}의 약수는 ${divisor}이며, 모두 ${cnt}개 입니다.`);ㄴ
+    </script>
+</head>
+<body>
+</body>
+</html>

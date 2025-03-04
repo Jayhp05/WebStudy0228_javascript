@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>while 문과 do while 문</title>
+    <script>
+
+        let i = 0;
+        let sum = 0; 
+
+        /* while 문은 조건식이 거짓일 때 단 한 번도 실행되지 않는다.
+        * while(조건식) { 조건이 참인 동안 실행 }
+        */
+        while(i < 100) {
+            i++;
+            if(i % 2 == 0) {
+                sum += i;
+            }
+        }
+
+        document.write('while문의 1 ~ 100까지 짝수 합 : ' + sum + "<br>");
+
+        i = 0;
+        sum = 0;
+
+        do {
+            i++;
+            if(i % 2 == 1) {
+                sum += i;
+            }
+        } 
+        while(i < 100);
+
+        document.write('do while문의 1 ~ 100까지 홀수의 합 : ' + sum);
+    </script>
+</head>
+<body>
+</body>
+</html>

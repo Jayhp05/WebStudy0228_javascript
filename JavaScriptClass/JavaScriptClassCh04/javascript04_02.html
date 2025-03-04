@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>for 문에서 if 문 사용하기</title>
+    <script>
+
+        document.write("<h2>1 ~ 100까지 짝수와 홀수의 합 구하기</h2>");
+
+        let oddSum = 0;
+        let evenSum = 0;
+
+        for (let i = 1; i <= 100; i++) {
+            if(i % 2 == 0) {
+                evenSum += i;
+            }
+            
+            else {
+                oddSum += i;
+            }
+        }
+
+        document.write("1 ~ 100까지 짝수의 합 : " + evenSum + "<br>");
+        document.write("1 ~ 100까지 홀수의 합 : " + oddSum + "<br>");
+
+        let num = 3;
+        let count = 0;
+        let sum = 0;
+        let nums = "";
+
+        for (let i = 1; i <= 100; i++) {
+            if(i % num == 0) {
+                nums += (i <= 100 - num) ? i + ", " : i;
+
+                sum += i;
+
+                count++;
+            }
+        }
+
+        document.write("1 ~ 100까지 3의 배수 : " + nums + "<br>");
+        document.write("1 ~ 100까지 3의 개수 그리고 합계 : " + count + ", " + sum + "<br>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
