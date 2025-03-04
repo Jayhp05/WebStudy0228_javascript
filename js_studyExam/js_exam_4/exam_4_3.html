@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>중첩 for 문을 이용한 구구단 출력</title>
+    <script>
+
+        document.write("<h1>1 ~ 60까지 한 줄에 10단위씩 출력하기</h1>");
+
+        let nums = "";
+
+        document.write("<strong>[실행결과]</strong><br>");
+        for(let i = 1; i <= 60; i++) {
+            nums += i;
+            
+            if(i % 10 ==0 ) {
+                nums += "<br>";
+            }
+            else {
+                nums += ", ";
+            }
+        }
+        document.write(nums);
+
+    </script>
+</head>
+<body>
+</body>
+</html>

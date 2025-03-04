@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>if else if 조건문</title>
+    <style>
+    </style>
+    <script>
+        function diceGame() {
+
+            let rule = document.inputForm.rule.value;
+
+            let num = parseInt(Math.random() * 6) + 1;
+            let my_num = parseInt(Math.random() * 6) + 1;
+            
+            if (rule == "") {
+                alert("게임 룰이 선택되지 않았습니다.\n 게임 룰을 선택해 주세요.");
+                return;
+            }
+            else if (rule == "1") {
+                if (num > my_num) { // 높은 수 승 게임
+                    alert("게임 룰은 높은 숫자가 승리! \n" + "컴퓨터 숫자 : " + num + ", 당신의 숫자 : " + my_num + " 당신이 졌습니다.");
+                }
+                else if (num < my_num) {
+                    alert("게임 룰은 높은 숫자가 승리! \n" + "컴퓨터 숫자 : " + num + ", 당신의 숫자 : " + my_num + " 당신이 이겼습니다.");
+                }
+            }
+            else if (rule == "0") {
+                if (num > my_num) { // 낮은 수 승 게임
+                    alert("게임 룰은 낮은 숫자가 승리! \n" + "컴퓨터 숫자 : " + num + ", 당신의 숫자 : " + my_num + " 당신이 이겼습니다.");
+                }
+                else if (num < my_num) {
+                    alert("게임 룰은 낮은 숫자가 승리! \n" + "컴퓨터 숫자 : " + num + ", 당신의 숫자 : " + my_num + " 당신이 졌습니다.");
+                }
+            }
+
+            document.inputForm.num.value = "";
+        }
+    </script>
+</head>
+<body>
+    <form name="inputForm">
+        게임 룰 선택 : <label><input type="radio" name="rule" value="1">높은 수 승</label>
+        <label><input type="radio" name="rule" value="0">낮은 수 승</label>
+        <input type="button" value="게임시작" onclick="diceGame()">
+    </form> 
+</body>
+</html>

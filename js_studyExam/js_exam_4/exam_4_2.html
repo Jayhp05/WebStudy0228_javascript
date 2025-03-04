@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>중첩 for 문을 이용한 구구단 출력</title>
+    <script>
+
+        document.write("<h1>57부터 ~ 119까지 3의 배수이면서 6의 배수가 아닌 정수 구하기</h1>");
+
+        let a = 3;
+        let b = 6;
+        let nums = "";
+        let cnt_a = 0;
+        let sum = 0;
+
+        for(let i = 57; i < 120; i++) {
+            if(i % a == 0 && i % b != 0) {
+                nums += (i < 120 - a) ? i + ", " : i;
+                sum += i;
+                cnt_a++;
+            }
+        }
+
+        document.write("<strong>" + a + "의 배수이면서 " + b + "의 배수가 아닌 수 : " + nums + "</strong><br><br>");
+        document.write("<strong>" + a + "의 배수이면서 " + b + "의 배수가 아닌 정수의 개수 : " + cnt_a + "</strong><br><br>");
+        document.write("<strong>" + a + "의 배수이면서 " + b + "의 배수가 아닌 정수의 합 : " + sum + "</strong><br>");
+    </script>
+</head>
+<body>
+</body>
+</html>

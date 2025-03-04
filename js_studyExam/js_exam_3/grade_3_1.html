@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>if else if 조건문</title>
+    <style>
+        #result {
+            width: 600px;
+            height: 100px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+
+        function inputGrade() {
+            let score = document.inputForm.score.value;
+
+            let result = document.querySelector("#result");
+
+            if(isNaN(score)) {
+                alert("점수외에 다른 입력문자는 입력하지 마세요.");
+            }
+            else if(score >= 90 && score <= 100) {
+                result.innerHTML += "<strong> 90 ~ 100점 사이 : " + score + " 점(A) </strong><br>";
+            }
+            else if(score >= 80 && score <= 89) {
+                result.innerHTML += "<strong> 80 ~ 89점 사이 : " + score + " 점(B) </strong><br>";
+            }
+            else if(score >= 70 && score <= 79) {
+                result.innerHTML += "<strong> 70 ~ 79점 사이 : " + score + " 점(C) </strong><br>";
+            }
+            else if(score >= 60 && score <= 69) {
+                result.innerHTML += "<strong> 60 ~ 69점 사이 : " + score + " 점(D) </strong><br>";
+            }
+            else {
+                result.innerHTML += "<strong> 이외 점수 : " + score + " 점(F) </strong><br>";
+            }
+            document.form1.score.value = "";
+        }
+
+    </script>
+</head>
+<body>
+    <h2>학점 출력</h2>
+    <form name="inputForm" action="#">
+        점수를 입력해 주세요 : 
+        <input type="text" name="score" id="score">
+        <input type="button" value="체크하기" onclick="inputGrade();">
+    </form>
+    <div id="result">
+
+    </div>
+</body>
+</html>
