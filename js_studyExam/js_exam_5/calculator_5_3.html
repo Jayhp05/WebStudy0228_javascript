@@ -24,6 +24,10 @@
             padding: 10px 25px; 
         }
 
+        .buttons {
+            text-align: center;
+        }
+
         .equals { 
             padding: 10px 58px; 
         }
@@ -44,67 +48,126 @@
         }
     </style>
     <script>
+        const buttons = document.querySelectorAll('button');
+        const operators = document.querySelectorAll('.operator');
+        const displayElement = document.querySelector('#result');
+        const numBtn = document.querySelectorAll('.numBtn');
 
-        function system() {
-            if(button == "0") {
-                alert("숫자 0을 먼저 입력하였습니다. 다시 입력해주세요.");
-            }
-            else if(button == "") {
-                alert("먼저 숫자을 입력해 주세요"); // 연산자 버튼 먼저 클릭 시
-            }
-            else if(button) {
+        let operatorOn = ''; // 연산자 입력
+        let previousNum = ''; //이전 값
+        let resentNum = ''; // 최근값
 
-            }
+        //calculate 함수 (previousNum, operatorOn, resentNum 인자로 받음)
+        let calculate = (n1, operator, n2) => {
+        let equals = 0;
+        switch (operator) {
+            case '+':
+                equals = Number(n1) + Number(n2);
+                break;
+
+            case '-':
+                equals = Number(n1) - Number(n2);
+                break;
+
+            case 'x':
+                equals = Number(n1) * Number(n2);
+                break;
+
+            case '/':
+                equals = Number(n1) / Number(n2);
+                break;
+
+            default:
+                break;
         }
+        return String(equals);
+        };
 
-        function equal() {
+        let calculator = () => {
+            let isFirstDigit = true; // 첫 번째 숫자 여부를 판별하는 변수
 
-        }
+            buttons.forEach((item) => {
 
-        function calculrator() {
-            switch(button) {
-                case "-" :
-                    result = firstNum - SecondNum;
-                    break;
+                item.addEventListener('click', (e) => {
+                    let action = e.target.classList[0];
+                    let click = e.target.innerHTML;
 
-                case "*" :
-                    result = firstNum * SecondNum;
-                    break;
+                    if (action === 'operator') {
+                        //연산자 눌렀을 때
+                        operatorOn = click;
+                        previousNum = displayElement.textContent;
+                        displayElement.textContent = '';
+                        isFirstDigit = true; // 연산자를 누르면 다음 숫자는 첫 번째 숫자가 됨
+                    }
+                    
+                    if (action === 'numBtn') {
+                        if (isFirstDigit && click === '0') {
+                            return;
+                        }
 
-                case "+" :
-                    result = firstNum + SecondNum;
-                    break;
+                        if (displayElement.textContent === '' && operatorOn === '') {
+                            displayElement.textContent = click;
+                            previousNum = displayElement.textContent;
+                        } 
+                        else if (displayElement.textContent !== '' && operatorOn === '') {
+                            displayElement.textContent = 
+                            displayElement.textContent + click;
+                            previousNum = displayElement.textContent;
+                        } 
+                        else if (displayElement.textContent === '' && operatorOn !== '') {
+                            displayElement.textContent = click;
+                            resentNum = displayElement.textContent;
+                        } 
+                        else if (displayElement.textContent !== '' && operatorOn !== '') {
+                            displayElement.textContent = 
+                            displayElement.textContent + click;
+                            resentNum = displayElement.textContent;
+                        }
 
-                case "/" :
-                    result = firstNum / SecondNum;
-                    break;
-            }
-        }
+                        isFirstDigit = false; // 첫 번째 숫자 입력 후에는 첫 번째 숫자가 아님을 표시
+                    }
+
+                    if (action === 'equals') {
+                        // = 눌렀을 때 calculate함수 실행
+                            displayElement.textContent = calculate(
+                            previousNum,
+                            operatorOn,
+                            resentNum
+                        );
+
+                        isFirstDigit = true; // 결과를 표시한 후에는 다음 숫자는 첫 번째 숫자가 됨
+                    }
+                });
+            });
+        };
+        calculator();
 
     </script>
 </head>
 <body>
 <div>
-	<form name="form1" id="form1" onsubmit="return false;">	
+	<form name="mainForm" id="mainForm" onsubmit="return false;">
 		<input type="text" name="result" id="result" readonly><br>
-		<button name="num7" value="7">7</button>
-		<button name="num8" value="8">8</button>
-		<button name="num9" value="9">9</button>
-		<button name="divide" value="/">/</button><br>
-		
-		<button name="num4" value="4">4</button>
-		<button name="num5" value="5">5</button>
-		<button name="num6" value="6">6</button>
-		<button name="subtract" value="-">-</button><br>
-		
-		<button name="num1" value="1">1</button>
-		<button name="num2" value="2">2</button>
-		<button name="num3" value="3">3</button>
-		<button name="multiply" value="*">*</button><br>
-		
-		<button name="num0" value="0">0</button>
-		<button name="equal" value="=" class="equals">=</button>
-		<button name="add" value="+" class="add">+</button>	
+        <div class="buttons">
+            <button name="num7" value="7" class="numBtn">7</button>
+            <button name="num8" value="8" class="numBtn">8</button>
+            <button name="num9" value="9" class="numBtn">9</button>
+            <button name="divide" value="/" class="operator">/</button><br>
+            
+            <button name="num4" value="4" class="numBtn">4</button>
+            <button name="num5" value="5" class="numBtn">5</button>
+            <button name="num6" value="6" class="numBtn">6</button>
+            <button name="subtract" value="-" class="operator">-</button><br>
+            
+            <button name="num1" value="1" class="numBtn">1</button>
+            <button name="num2" value="2" class="numBtn">2</button>
+            <button name="num3" value="3" class="numBtn">3</button>
+            <button name="multiply" value="*" class="operator">*</button><br>
+            
+            <button name="num0" value="0" class="numBtn">0</button>
+            <button name="equal" value="=" class="equals">=</button>
+            <button name="add" value="+" class="operator">+</button>
+        </div>
 	</form>
 </div>
 </body>
