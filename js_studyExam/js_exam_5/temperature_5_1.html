@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            margin-top: 25px;
+            width: 500px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+    
+    <script>        
+        function makeNew() {
+            var input = document.getElementById("temperature");
+            var temperature = document.inputForm.temperature.value;
+            var radio = document.getElementsByName("change");
+            var result = document.getElementById("result");
+
+            if (radio[0].checked) {
+                var celsius = (temperature - 32) / 1.8;
+                result.innerHTML = `${temperature}℉는 ${celsius}℃ 입니다.`;    // 섭씨로 변환
+            }
+            else {
+                var fahrenheit = (temperature * 1.8) + 32;
+                result.innerHTML = `${temperature}℃는 ${fahrenheit}℉입니다.`;    // 화씨로 변환
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h2>화씨와 섭씨 온도 서로 변환하기</h2>
+    <form name="inputForm" action="#">
+        <input type="text" name="temperature">
+        <input type="radio" name="change" value="Cel">℉->℃
+        <input type="radio" name="change" value="Fah">℃->℉
+        <input type="button" value="입력하기" onclick="makeNew();">
+    </form>
+
+    <div id="result">
+    </div>
+
+    <!-- 예제 5-1 -->
+    <!-- 다음을 참고해 섭씨온도를 입력으로 받아서 화씨온도로 변환하거나 화씨온도를 입력으로 받아서 섭
+         씨온도로 변환해 반환하는 다음과 같이 실행되는 함수를 작성하고 테스트 해 보자 -->
+    <!-- 화씨를 섭씨온도로 변환하는 식 : (86℉ - 32) / 1.8 = 30℃
+         섭씨를 화씨온도로 변환하는 식 : (30℃ * 1.8) + 32 = 86℉ -->
+</body>
+</html>

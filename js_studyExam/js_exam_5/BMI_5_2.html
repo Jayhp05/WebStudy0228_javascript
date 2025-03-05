@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #final {
+            margin-top: 25px;
+            width: 500px;
+            height: 150px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        document.write("<h2>체질량지수로 비만을 진단하는 함수</h2>");
+        
+        // var name = prompt("이름을 입력하세요.", "-"); // 이름 입력
+        // var height = prompt("신장을 입력하세요.", "0"); // 신장 입력
+        // var weight = prompt("몸무게를 입력하세요.", "0"); // 몸무게 입력
+
+        // document.write(name + "의 키는 ");
+        // document.write(height + ", ");
+        // document.write("몸무게는 " + weight + "kg 이며" + "<br>");
+
+        // var bmiResult = weight / ((height) * (height) / 10000);
+
+        // var result;
+        // result = bmiResult;
+
+        function BMI() {
+
+            var name = document.inputForm.name.value;
+            var height = document.inputForm.height.value;
+            var weight = document.inputForm.weight.value;
+
+            let final = document.querySelector("#final");
+
+            // final.innerHTML = (name + "의 키는 ");
+            // final.innerHTML = (height + ", ");
+            // final.innerHTML = ("몸무게는 " + weight + "kg 이며" + "<br>");
+            
+            var bmiResult = weight / ((height) * (height) / 10000);
+
+            var result;
+            result = bmiResult;
+
+            if(result >= 35){
+                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 고도비만에 해당합니다.<br>");
+            }
+            else if(30 <= result < 35) {
+                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 중도비만에 해당합니다.<br>");
+            }
+            else if(25 <= result < 30) {
+                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 경도비만에 해당합니다.<br>");
+            }
+            else if(23 <= result < 25) {
+                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 과체중에 해당합니다.<br>");
+            }
+            else if(18.5 <= result < 23) {
+                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 정상체중에 해당합니다.<br>");
+            }
+            else {
+                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 저체중에 해당합니다.<br>");
+            }
+        }  
+    </script>
+</head>
+<body>
+    <form name="inputForm" action="#">
+        <input type="text" name="name" id="name" placeholder="이름">
+        <input type="text" name="height" id="height" placeholder="키">
+        <input type="text" name="weight" id="weight" placeholder="몸무게">
+        <input type="button" value="계산하기" onclick="BMI();">        
+    </form>
+    <div id="final">
+
+    </div>
+</body>
+</html>

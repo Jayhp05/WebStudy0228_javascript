@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>사칙연산을  수행하는 계산기 함수로 정의하기</title>
+    <style type="text/css">
+        div {
+            width: 300px;
+            margin: 30px auto;
+            padding: 15px 0px;
+            background-color: #C9C9C9;
+            border-radius: 5px 5px;
+        }
+
+        #form1 {
+            margin: auto auto;		
+            text-align: center; 
+        }
+
+        button { 
+            margin: 1px;
+            padding: 10px 25px; 
+        }
+
+        .equals { 
+            padding: 10px 58px; 
+        }
+
+        .add { 
+            padding: 10px 24px; 
+        }
+
+        #result {
+            margin: 10px;
+            padding: 5px;
+            font: bold 28px/100% blue;
+            background-color: darkgray;
+            width: 250px;
+            height: 50px;
+            line-height: 50px;
+            text-align: right;
+        }
+    </style>
+    <script>
+
+        function system() {
+            if(button == "0") {
+                alert("숫자 0을 먼저 입력하였습니다. 다시 입력해주세요.");
+            }
+            else if(button == "") {
+                alert("먼저 숫자을 입력해 주세요"); // 연산자 버튼 먼저 클릭 시
+            }
+            else if(button) {
+
+            }
+        }
+
+        function equal() {
+
+        }
+
+        function calculrator() {
+            switch(button) {
+                case "-" :
+                    result = firstNum - SecondNum;
+                    break;
+
+                case "*" :
+                    result = firstNum * SecondNum;
+                    break;
+
+                case "+" :
+                    result = firstNum + SecondNum;
+                    break;
+
+                case "/" :
+                    result = firstNum / SecondNum;
+                    break;
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div>
+	<form name="form1" id="form1" onsubmit="return false;">	
+		<input type="text" name="result" id="result" readonly><br>
+		<button name="num7" value="7">7</button>
+		<button name="num8" value="8">8</button>
+		<button name="num9" value="9">9</button>
+		<button name="divide" value="/">/</button><br>
+		
+		<button name="num4" value="4">4</button>
+		<button name="num5" value="5">5</button>
+		<button name="num6" value="6">6</button>
+		<button name="subtract" value="-">-</button><br>
+		
+		<button name="num1" value="1">1</button>
+		<button name="num2" value="2">2</button>
+		<button name="num3" value="3">3</button>
+		<button name="multiply" value="*">*</button><br>
+		
+		<button name="num0" value="0">0</button>
+		<button name="equal" value="=" class="equals">=</button>
+		<button name="add" value="+" class="add">+</button>	
+	</form>
+</div>
+</body>
+</html>
