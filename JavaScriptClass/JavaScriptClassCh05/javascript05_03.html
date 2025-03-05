@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수의 유효 범위</title>
+<script>
+    // 전역변수
+    var num = 10;
+
+    function add(num1, num2) {
+        // 지역변수
+        num3 = 10;
+
+        {var num10 = 10}
+
+        return num1 + num2 + num + num10;
+    }
+
+    console.log(`add 함수 : ${add(10, 20)}`);
+    console.log(`num3 : ${num3}`);
+
+    {
+        var num4 = 100;
+    }
+
+    console.log(`num4 : ${num4}`);
+
+    let str1 = "스크립트 스코프";
+    const SCRIPT_SCOPE_NUM = 10;
+
+    function sum(num1, num2) {
+        let sum = 0;
+        for(var i = 0; i <= num2; i++) {
+            sum += i;
+        }  
+
+        console.log(`i : ${i}`);
+        return sum + SCRIPT_SCOPE_NUM;
+    }
+
+    console.log(`sum : ${sum(1, 10)}`);
+
+</script>
+</head>
+<body>
+    <script>
+        console.log(`num : ${num}`);
+        console.log(`str1 : ${str1}`);
+    </script>
+</body>
+</html>

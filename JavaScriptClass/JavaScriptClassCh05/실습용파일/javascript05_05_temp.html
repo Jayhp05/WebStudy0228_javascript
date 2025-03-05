@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>폼에서 함수 활용하기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        let inputAge = function() {
+            let age = prompt("나이를 입력해주세요: ");
+            form1.age.value = age;
+        }
+
+        function chageSelected(elem) {
+            // console.log(elem);
+
+            let val = elem.options[elem.selectedIndex].text + " 선택됨";
+            alert(val);
+        }
+
+        function registSubmit() {
+            let f1 = document.form1;
+            // 외부 함수 이용해 폼에 데이터가 잘 입력되었는지 체크
+
+            // 잘 입력되었으면 외부 함수를 이용해 현재 입력된 값을 읽어옴
+            let inputData = getInputData(f1);
+            alert(inputData);
+        }
+
+        function getInputData(f1) {
+            let name = f1.name.value;
+            let age = f1.age.value;
+            let interest = f1.choice.options[f1.choice.selectedIndex].text;
+
+            if(name == "") {
+                alert("이름을 입력해 주세요");
+                return false;
+            }
+
+            return `입력된 정보\n이름 : ${name}\n나이 : ${age}\n관심분야 : ${interest}`;
+        }
+
+    </script>
+    <script>
+        $(function() {
+            $("#choice").change(function() {
+                console.log(this + ", " + $(this).val())
+            })
+        });
+    </script>
+</head>
+<body>
+    <form name="form1" onsubmit="return registSubmit();">
+        이름 : <input type="text" name="name"><br>
+        나이 : <input type="text" name="age" readonly>
+        <input type="button" value="나이 입력" onclick="inputAge();"><br>
+        관심분야 : <select name="choice" id="choice" onchange="chageSelected(this);">
+                    <option>자바</option>
+                    <option>JSP</option>
+                    <option>자바스크립트</option>
+                    <option>안드로이드</option>
+                    <option>스프링</option>
+        </select><br><br>
+        <input type="submit" value="등록하기" >
+    </form>
+</body>
+</html>

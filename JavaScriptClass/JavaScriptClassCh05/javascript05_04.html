@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>화살표 함수</title>
+    <script>
+        // let func = (매개변수) => {함수의 본문} => func()
+        let circle10 = () => {
+            document.write(`반지름이 10인 원의 길이 : ${10 * 10 * 3.14}<br>`);
+        }
+
+        let circle11 = () => 
+            document.write(`반지름이 11인 원의 길이 : ${11 * 11 * 3.14}`);
+
+        circle10();
+        circle11();
+
+        let circle0 = (radius) => {return radius * radius * 3.14};
+        let cir0 = function(radius) {return radius * radius * 3.14};
+        console.log(circle0(10));
+        console.log(cir0(10));
+        console.log(`circle0 : ${circle0(10)}`);
+
+        // let rectangle = function(width, height) { return width * height };
+        let rectangle = (width, height) => width * height;
+
+        document.write("사각형의 넓이 : " + rectangle(10, 10) + "<br>");
+            
+        // let rectangle = function(width, height) { return width * height };
+        let triangle = (width, height = 5) => { width * height / 2 };
+        document.write("삼각형의 넓이 : " + triangle(10, 10) + "<br>");
+
+        
+    </script>
+</head>
+<body></body>
+</html>
