@@ -10,12 +10,13 @@
             width: 500px;
             height: 150px;
             border: 1px solid black;
+            overflow-y: auto; /* 스크롤 생성 */
         }
     </style>
 
     <script>
         document.write("<h2>체질량지수로 비만을 진단하는 함수</h2>");
-        
+
         // var name = prompt("이름을 입력하세요.", "-"); // 이름 입력
         // var height = prompt("신장을 입력하세요.", "0"); // 신장 입력
         // var weight = prompt("몸무게를 입력하세요.", "0"); // 몸무게 입력
@@ -31,39 +32,71 @@
 
         function BMI() {
 
+            // 전역 범위로 선언하기 위해 var 전역 변수를 사용해 보았습니다.
             var name = document.inputForm.name.value;
             var height = document.inputForm.height.value;
             var weight = document.inputForm.weight.value;
 
-            let final = document.querySelector("#final");
+            var final = document.querySelector("#final");
 
             // final.innerHTML = (name + "의 키는 ");
             // final.innerHTML = (height + ", ");
             // final.innerHTML = ("몸무게는 " + weight + "kg 이며" + "<br>");
-            
+
+            // 입력값이 숫자인지 확인
+            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+                alert("키와 몸무게를 올바르게 입력하세요.");
+
+                return;
+            }
+
             var bmiResult = weight / ((height) * (height) / 10000);
 
-            var result;
-            result = bmiResult;
+            // var result;
+            // result = bmiResult;
 
-            if(result >= 35){
-                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 고도비만에 해당합니다.<br>");
+            var category = "";
+
+            // if(result >= 35){
+            //     final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 고도비만에 해당합니다.<br>");
+            // }
+            // else if(30 <= result < 35) {
+            //     final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 중도비만에 해당합니다.<br>");
+            // }
+            // else if(25 <= result < 30) {
+            //     final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 경도비만에 해당합니다.<br>");
+            // }
+            // else if(23 <= result < 25) {
+            //     final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 과체중에 해당합니다.<br>");
+            // }
+            // else if(18.5 <= result < 23) {
+            //     final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 정상체중에 해당합니다.<br>");
+            // }
+            // else {
+            //     final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 저체중에 해당합니다.<br>");
+            // }
+
+            if (bmiResult >= 35) {
+                category = "고도비만";
             }
-            else if(30 <= result < 35) {
-                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 중도비만에 해당합니다.<br>");
+            else if (bmiResult >= 30) {
+                category = "중도비만";
             }
-            else if(25 <= result < 30) {
-                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 경도비만에 해당합니다.<br>");
-            }
-            else if(23 <= result < 25) {
-                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 과체중에 해당합니다.<br>");
-            }
-            else if(18.5 <= result < 23) {
-                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 정상체중에 해당합니다.<br>");
-            }
+            else if (bmiResult >= 25) {
+                category = "경도비만";
+            } 
+            else if (bmiResult >= 23) {
+                category = "과체중";
+            } 
+            else if (bmiResult >= 18.5) {
+                category = "정상체중";
+            } 
             else {
-                final.innerHTML = (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는" + result + "로 저체중에 해당합니다.<br>");
+                category = "저체중";
             }
+
+            final.innerHTML += (name + "의 키는 " + height + "cm, " + "몸무게는 " + weight + "kg 이며<br>" + "체질량지수는 " + bmiResult.toFixed(2) + "로 " + category + "에 해당합니다.<br><br>");
+
         }  
     </script>
 </head>
