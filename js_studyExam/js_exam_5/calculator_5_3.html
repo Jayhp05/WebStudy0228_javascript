@@ -30,10 +30,6 @@
             padding: 10px 25px; 
         }
 
-        .buttons {
-            text-align: center;
-        }
-
         .equals { 
             padding: 10px 58px; 
         }
@@ -56,7 +52,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const buttons = document.querySelectorAll('button');
-            const display = document.querySelector('#result');
+            const displayElement = document.querySelector('#result');
 
             let operatorOn = '';  // 연산자 저장
             let previousNum = ''; // 첫 번째 숫자 저장
@@ -117,9 +113,8 @@
                     }
 
                     if (action === 'operator') {
-                        if (previousNum === '') {
+                        if (previousNum === '') {                            
                             alert("먼저 숫자를 입력해 주세요.");
-                            
                             return;
                         }
 
@@ -130,6 +125,7 @@
 
                     if (action === 'equals') {
                         if (previousNum === '' || operatorOn === '' || recentNum === '') {
+                            
                             return;
                         }
 
@@ -145,28 +141,28 @@
     </script>
 </head>
 <body>
-<div>
-	<form name="mainForm" id="mainForm" onsubmit="return false;">
-		<input type="text" name="result" id="result" readonly><br>
-        <button name="num7" value="7" class="numBtn">7</button>
-        <button name="num8" value="8" class="numBtn">8</button>
-        <button name="num9" value="9" class="numBtn">9</button>
-        <button name="divide" value="/" class="operator">/</button><br>
-            
-        <button name="num4" value="4" class="numBtn">4</button>
-        <button name="num5" value="5" class="numBtn">5</button>
-        <button name="num6" value="6" class="numBtn">6</button>
-        <button name="subtract" value="-" class="operator">-</button><br>
-            
-        <button name="num1" value="1" class="numBtn">1</button>
-        <button name="num2" value="2" class="numBtn">2</button>
-        <button name="num3" value="3" class="numBtn">3</button>
-        <button name="multiply" value="*" class="operator">*</button><br>
-            
-        <button name="num0" value="0" class="numBtn">0</button>
-        <button name="equal" value="=" class="equals">=</button>
-        <button name="add" value="+" class="operator">+</button>
-	</form>
-</div>
+    <div>
+        <form name="mainForm" id="mainForm" onsubmit="return false;">
+            <input type="text" name="result" id="result" readonly><br>
+            <button name="num7" value="7" class="numBtn">7</button>
+            <button name="num8" value="8" class="numBtn">8</button>
+            <button name="num9" value="9" class="numBtn">9</button>
+            <button name="divide" value="/" class="operator">/</button><br>
+                
+            <button name="num4" value="4" class="numBtn">4</button>
+            <button name="num5" value="5" class="numBtn">5</button>
+            <button name="num6" value="6" class="numBtn">6</button>
+            <button name="subtract" value="-" class="operator">-</button><br>
+                
+            <button name="num1" value="1" class="numBtn">1</button>
+            <button name="num2" value="2" class="numBtn">2</button>
+            <button name="num3" value="3" class="numBtn">3</button>
+            <button name="multiply" value="*" class="operator">*</button><br>
+                
+            <button name="num0" value="0" class="numBtn">0</button>
+            <button name="equal" value="=" class="equals">=</button>
+            <button name="add" value="+" class="operator">+</button>
+        </form>
+    </div>
 </body>
 </html>
