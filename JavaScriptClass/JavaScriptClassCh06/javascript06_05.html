@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트의 최상위 내장객체  - Object</title>
+    <script>
+        let object = new Object();
+
+        let score = { 
+            kor : 87,
+            math : 85,
+            english : 91
+        }
+        
+        document.write(score + ", " + object.toString()+ "<br>");
+        document.write((score instanceof Object) + "<br>");
+        
+        Object.prototype.everyFunc = function() {
+            alert("Object everyFunc 호출됨");
+        }
+        
+        const num = new Number();
+        let str = "안녕 자바스크립트";
+        num.everyFunc();
+        str.everyFunc();
+        
+        for(key in score) {
+            console.log(key + " : " + score[key]);
+            document.write(`${key} - ${score[key]}<br>`);
+        }
+
+        document.write(`${Object.keys(score)}<br>`);
+        document.write(`${Object.values(score)}<br>`);
+        document.write(`${Object.entries(score)}<br>`);
+
+        console.log(Object.keys(score));
+        console.log(Object.values(score));
+        console.log(Object.entries(score));
+
+    </script>
+</head>
+<body>
+</body>
+</html>

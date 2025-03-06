@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>객체의 타입 체크 - instanceof 연산자</title>
+    <script>
+       function Member(name, id)  {
+            this.name = name;
+            this.id = id;
+       }
+
+       const member = new Member("이순신", "midas");
+
+       document.write("<h2>객체의 타입 체크</h2>");
+       document.write(`typeof member : ${typeof member}<br>`);
+       document.write(`typeof 1 : ${typeof 1}<br>`);
+       document.write(`member instanceof Member : ${member instanceof Member}<br>`);
+       document.write(`member instanceof String : ${member instanceof String}<br>`);
+       document.write(`member instanceof Object : ${member instanceof Object}<br>`);
+       
+
+    </script>
+</head>
+<body></body>
+</html>

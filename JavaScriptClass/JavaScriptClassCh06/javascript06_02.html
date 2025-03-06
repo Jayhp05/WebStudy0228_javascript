@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>객체 정의하고 사용하기</title>
+    <script>
+        const objHuman1 = {};
+        objHuman1.name = "홍길동";
+        objHuman1.age = 20;
+        objHuman1.toString = function() {
+            return this.name + ", " + this.age;
+        }
+
+        const objHuman2 = {
+            name: "장길산",
+            age: 30,
+            toString() {
+                return this.name + ", " + this.age;
+            }
+        }
+
+        // 객체 정의 (위 두 예제처럼 생성이 아닌 객체의 정의만 행함)
+        function Human(name, age) {
+            this.name = name;
+            this.age =age;
+            this.toString = function() {
+                return name + ", " + age;
+            }
+        }
+
+        let human1 = new Human("이순신", 35);
+        let human2 = new Human("김유신", 24);
+
+        human1.name = "김유신";
+        document.write("닷(.) 연산자 : " + human1.name);
+        document.write("\n\n\n\n\n\n\n\n\n, ");
+        document.write("<br>속성(key) : " + human2["age"]);
+
+    </script>
+</head>
+<body></body>
+</html>

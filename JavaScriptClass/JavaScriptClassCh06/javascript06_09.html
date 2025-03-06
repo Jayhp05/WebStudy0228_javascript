@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>문자열 내장객체(String)</title>
+    <script>
+        let str = "    Hello JavaScript    ";
+        let kStr = "안녕 자바스크립트";
+        let path = "file:///D:/WebStudyProjects/WebStudy0228/JavaScriptClass/JavaScriptClassCh06/javascript06_09.html";
+
+        let index = path.lastIndexOf("/");
+        console.log(path.substring(index + 1));
+        document.write(path.substring(index + 1));
+
+        let fileName = path.substring(index + 1);
+        console.log(fileName);
+        
+        console.log(path.substring(8, 17));
+        console.log(path.substr(8, 9));
+
+        console.log(path.substring(7).split("/"));
+        console.log(kStr.charAt() + " = " + kStr.charAt(3));
+
+        console.log(path.toUpperCase());
+        console.log(path.toLowerCase());
+
+        console.log(kStr.replace("안녕", "Hi"));
+        
+    </script>
+</head>
+<body>
+</body>
+</html>
