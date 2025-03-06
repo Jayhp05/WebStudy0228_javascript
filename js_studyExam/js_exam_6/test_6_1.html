@@ -1,0 +1,72 @@
+<!--
+*******************************************************************************************
+    생성자 함수 방식으로 Person 객체를 정의하고 다음 요구사항에 따라서 웹페이지에 출력하시오.
+    1. Person 객체는 이름, 나이, 주소를 저장할 수 있는 속성을 가지고 있다.
+    2. Person 객체의 현재 상태를 문자열로 출력해 주는 toString 메서드를 가지고 있다.
+    3. 문서가 실행되면 아래 그림에서 좌측 그림과 같이 실행되도록 화면을 구성하시오
+    4. 객체 출력하기 버튼이 클릭되면 Person 객체를 생성하여 Array 객체에 저장한 후에 아래 그림 
+    우측과 같이 출력되도록 프로그램을 작성하시오.
+*******************************************************************************************
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            width: 500px;
+            height: 100px;
+            border: 1px solid blue;
+            /* overflow-y: auto; */
+            text-align: left;
+        }
+    </style>
+    <script>
+        function data() {
+
+            let result = document.querySelector("#result");
+
+            result.innerHTML = "";
+
+            // Person 객체 생성
+            const Person = class {
+                constructor (name, age, address) {
+                    this.name = name;
+                    this.age = age;
+                    this.address = address;
+                }        
+
+                toString() {
+                    return "<li>" + this.name + "(" + this.age + ") - " + this.address + "</l1>";
+                }
+            }
+
+            // array 객체 배열에 출력한 정보 저장
+            let array = [
+                new Person("이순신", 25, "서울 구로구 구로동"),
+                new Person("강감찬", 32, "경기도 부천시 고강동"),
+                new Person("김유신", 37, "경기도 안양시 평촌동")
+            ];
+
+            // result.innerHTML = document.write(m1);
+            // result.innerHTML = document.write(m2);
+            // result.innerHTML = document.write(m3);
+
+            // 결과 출력
+            result.innerHTML = `<ul>${array.map(a => a.toString()).join('')}</ul>`;
+        }
+
+    </script>
+</head>
+<body>
+    <form name="main" action="#">
+        <input type="button" value="객체 출력하기" onclick="data();">
+    </form>
+    <div id="result">
+
+    </div>
+</body>
+</html>
