@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>새 창 띄우기 - SubWindow</title>
+    
+    <script>
+        window.onload = function() {
+            let btnInput = document.querySelector("#btnInput");
+
+            btnInput.addEventListener("click", function () {
+                // 입력된 값 읽어오기
+                let address = document.querySelector("#address").value;
+
+                // 현재 창을 열어준 부모 창 폼의 주소 입력 상자에 주소를 설정한다.
+                opener.parentForm.address.value = address;
+
+                // 현재 창을 닫는다.
+                self.close();
+            });
+        }
+
+        // function check() {  
+        //     let btnInput = document.querySelector("#btnInput");
+        // }
+    </script>
+
+</head>
+<body>
+	주소 입력 : <input type="text" name="address" id="address">
+	<input type="button" id="btnInput" value="입력하기">        <!-- onclick=check(); -->
+</body>
+</html>
