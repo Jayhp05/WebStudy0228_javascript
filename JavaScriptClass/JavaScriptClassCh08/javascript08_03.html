@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>요소 노드의 프로퍼티</title>
+    <script>	
+        
+    </script>
+</head>
+<body>
+	<div id="container">
+		<div class="header">
+			<h1>DOM Tree</h1>
+		</div>		
+		<div class="content">
+			<!-- 앞으로 스터디 할 목록 -->
+			<h2>프로그래밍 스터디 계획</h2>
+			<ul id="plan">
+				<li class="plan-list">JavaScript 함수</li>
+				<li class="plan-list">JavaScript DOM</li>
+				<li class="plan-list">JavaScript Event</li>
+				<li class="plan-list">jQuery 함수 선택자</li>					
+				<li class="plan-list">jQuery Effect</li>
+			</ul>
+		</div>
+		<div class="content">
+			<!-- 완료된 스터디 목록 -->
+			<h2>프로그래밍 스터디 완료</h2>
+			<ul id="done">
+				<li class="done-list">HTML 기본 태그</li>
+				<li class="done-list">HTML5 시멘틱 태그</li>
+				<li class="done-list">CSS3 선택자</li>
+				<li class="done-list">CSS3 박스모델</li>
+				<li class="done-list">JavaScript 제어문</li>
+			</ul>
+		</div>
+	</div>	
+    <script>
+        let content = document.querySelector(".content");
+        console.log(content.innerHTML);
+
+        // content.innerHTML = `<h2>과일 리스트</h2>
+        //                     <ul>
+        //                         <li>수박</li>
+        //                         <li>망고</li>
+        //                     </ul>`;
+
+        console.log(content.outerHTML);
+
+        content.outerHTML = `<div class="test">
+		                    	<h2>새로운 스터디 계획</h2>
+			                    <ul id="plan">
+                                    <li>오라클 SQL 활용</li>
+                                    <li>자바 기초 문법</li>
+                                </ul>
+		                    </div>`;
+
+        document.querySelector("#plan").innerHTML += "<li>자바 제어문 활용</li>";
+
+        let planList = document.querySelector("#done");
+        console.log(planList.innerText);
+        console.log(planList.textContent);
+
+        planList.children[1].innerText = "<p>HTML5 Form 태그</p>"
+        planList.children[3].textContent = "<p>CSS HTML5 Form 태그</p>"
+    </script>	
+</body>
+</html>
