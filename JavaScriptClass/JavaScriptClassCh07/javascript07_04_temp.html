@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>타이머로 시계 만들기</title>
+    <script>
+        let timer;
+
+        let clockStart = function() {
+            timer = window.setInterval(function() {
+                let date = new Date;
+
+                document.getElementById('result').innerHTML = date.toLocaleTimeString();
+
+            }, 1000);
+        }
+
+        // 문서객체가 준비되면 읽어옴
+        // document.addEventListener('DO<DOMContentLoaded', function() {
+
+        // })
+        
+        window.onload = function() {
+            document.getElementById('result').innerText = "1.5초 후에 시계가 자동으로 시작됩니다.";
+
+            let timeout = window.setTimeout(function() {
+                clockStart();
+            }, 1500);
+        }
+    </script>
+
+</head>
+<body>	
+	<input type="button" value="타이머 정지" onclick="clearInterval(timer);">
+	<div id="result"></div>
+</body>
+</html>

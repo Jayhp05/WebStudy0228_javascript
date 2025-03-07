@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>location 객체를 이용해 페이지 주소(URL) 다루기</title>
+    <script>
+        function locationMove() {
+            location.href="http://www.naver.com";
+        }   
+
+        function locationReload() {
+            location.reload()
+            alert('현재 페이지를 새로 고침 했습니다.');
+        }
+
+        window.onload = function() {
+            let href = location.href;
+            let origin = location.origin;
+            let pathname = location.pathname;
+            let protocol = location.protocol;
+            let host = location.host;
+            let hostname = location.hostname;
+            let port = location.port;
+            let search = location.search;
+
+            let result = "<h2>location 객체 정보</h2>"
+
+            result += "<ul>";
+            result +=   "<li>href : " + href +"</li>";
+            result +=   "<li>origin : " + origin + "</li>";
+            result +=   "<li>protocol : " + pathname + "</li>";
+            result +=   "<li>host : " + host + "</li>";
+            result +=   "<li>hostname : " + hostname + "</li>";
+            result +=   "<li>port : " + port + "</li>";
+            result +=   "<li>serach : " + search + "</li>";
+            result +=   "<li>serach : " + (search.length == 0 ? "쿼리 스트링 없음" : "") + "</li>";
+            result += "</ul>";
+
+            let div = document.querySelector("#locationStatus");
+            div.innerHTML = result;
+        }
+    </script>
+
+</head>
+<body>
+	<div id="locationStatus"></div>	
+	<input type="button" value="네이버 가기" onclick="locationMove();">
+	<input type="button" value="reload" onclick="locationReload();">
+
+    <!-- <script> -->
+
+    <!-- //     let href = location.href;
+    //     let origin = location.origin;
+    //     let pathname = location.pathname;
+    //     let protocol = location.protocol;
+    //     let host = location.host;
+    //     let hostname = location.hostname;
+    //     let port = location.port;
+    //     let search = location.search;
+
+    //     let result = "<h2>location 객체 정보</h2>"
+
+    //     result += "<ul>";
+    //     result +=   "<li>href : " + href +"</li>";
+    //     result +=   "<li>origin : " + origin + "</li>";
+    //     result +=   "<li>protocol : " + pathname + "</li>";
+    //     result +=   "<li>host : " + host + "</li>";
+    //     result +=   "<li>hostnamr : " + hostname + "</li>";
+    //     result +=   "<li>port : " + port + "</li>";
+    //     result +=   "<li>serach : " + search + "</li>";
+    //     result +=   "<li>serach : " + (search.length == 0 ? "쿼리 스트링 없음" : "") + "</li>";
+    //     result += "</ul>";
+
+    //     let div = document.querySelector("#locationStatus");
+    //     div.innerHTML = result; -->
+    <!-- // </script> -->
+</body>
+</html>

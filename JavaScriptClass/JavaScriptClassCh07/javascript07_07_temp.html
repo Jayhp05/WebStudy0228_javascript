@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>navigator 객체를 이용해 브라우저 정보 접근하기</title>
+    <script>
+        window.onload = function() {
+            let userAgent = navigator.userAgent;
+            let appCodeName = navigator.appCodeName;
+            let appName = navigator.appName;
+            let language = navigator.language;
+            let product = navigator.product;
+            let platform = navigator.platform;
+            let onLine = navigator.onLine;
+            let result = "";
+
+            result += "<ul>";
+            result +=   "<li>userAgent : " + userAgent + "</li>";
+            result +=   "<li>appCodeName : " + appCodeName + "</li>";
+            result +=   "<li>appName : " + appName + "</li>";
+            result +=   "<li>language: " + language + "</li>";
+            result +=   "<li>product : " + product + "</li>";
+            result +=   "<li> platform : " + platform + "</li>";
+            result +=   "<li>onLine : " + onLine + "</li>";
+            result += "</ul>";
+
+            let div = document.querySelector("#result");
+            div.innerHTML = result;
+        }
+        
+    </script>
+
+</head>
+<body>
+	<h2>사용자 웹 브라우저 정보</h2>
+	<div id="result"></div>
+</body>
+</html>

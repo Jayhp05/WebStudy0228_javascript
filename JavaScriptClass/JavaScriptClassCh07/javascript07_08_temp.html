@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>history 객체를 이용해 방문한 사이트 정보 다루기</title>
+    <script>
+        function goback() {
+            history.go(-(history.length - 1));
+
+            let cnt = document.querySelector("#historyCnt");
+            cnt.innerHTML = history.length;
+        }
+
+        function anchorMove(elem, page) {
+            elem.href = page;
+            elem.target = "subFrame";
+
+            let cnt = document.querySelector("#historyCnt");
+            cnt.innerHTML = history.length;
+        }
+    </script>
+
+</head>
+<body>	
+	<a href="#" onclick="anchorMove(this, 'javascript07_01_temp.html');">1페이지</a><br >
+	<a href="#" onclick="anchorMove(this, 'javascript07_02_temp.html');">2페이지</a><br >
+	<a href="#" onclick="anchorMove(this, 'javascript07_03_temp.html');">3페이지</a><br >	
+	<iframe name="subFrame" src="about:blank" width="400" height="200" 
+		id="content"></iframe><br>
+	<button type="button" onclick="goback();">처음으로</button>&nbsp;&nbsp;&nbsp;
+	<button type="button" onclick="history.back();">이전으로</button>&nbsp;&nbsp;&nbsp;
+	<button type="button" onclick="history.forward();">다음으로</button><br>
+	<div id="historyCnt"></div>
+</body>
+</html>
+
+<!-- history 객체의 back() 메서드는 방문 사이트 목록에서 현재 페이지의 
+바로 이전 페이지로 이동하며 forward() 메서드는 현재 페이지의 바로
+이후에 방문한 페이지로 이동한다.  -->
