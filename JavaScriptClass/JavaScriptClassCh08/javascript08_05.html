@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 태그의 속성 다루기</title>
+    <script>	
+        
+    </script>
+    <style>
+        li[data-study='studying']::after {
+            content :  " - studying";
+            color: blue;
+        }
+        li[data-study='waiting']::after {
+            content :  " - waiting";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+	<div id="container">
+		<div class="header">
+			<h1>DOM Tree</h1>
+		</div>		
+		<div class="content">
+			<!-- 앞으로 스터디 할 목록 -->
+			<h2>프로그래밍 스터디 계획</h2>
+			<ul id="plan" value="study-plan">
+				<li class="plan-list">JavaScript 함수</li>
+				<li class="plan-list">JavaScript DOM</li>
+				<li class="plan-list">JavaScript Event</li>
+				<li class="plan-list">jQuery 함수 선택자</li>					
+				<li class="plan-list">jQuery Effect</li>
+			</ul>
+		</div>
+		<div class="content">
+			<!-- 완료된 스터디 목록 -->
+			<h2>프로그래밍 스터디 완료</h2>
+			<ul id="done">
+				<li class="done-list">HTML 기본 태그</li>
+				<li class="done-list">HTML5 시멘틱 태그</li>
+				<li class="done-list">CSS3 선택자</li>
+				<li class="done-list">CSS3 박스모델</li>
+				<li class="done-list">JavaScript 제어문</li>
+			</ul>
+		</div>
+	</div>		
+
+    <script>
+        const plan = document.querySelector("#plan");
+        console.log(plan.parentElement.className);
+        // plan.parentElement.className = "content_plan";
+        console.log("plan.value : ", plan.value);
+        console.log("plan.id : " + plan.id);
+
+        /* 요소 노드의 프로퍼티로는 비표준 속성에 접근할 수 없지만 요소 노드의
+        * getAttribute() 메서드를 이용하면 HTML에서 설정한 모든 속성을 읽어올 수 있다.
+        * 이 메서드는 실제 HTML 태그에 지정한 표준과 비표준 속성 모두를 읽을 수 있다.
+        */
+        // 태그의 속성을 읽어오는 메소드(표준, 비표준 모두)
+        console.log(plan.getAttribute("value"));
+        console.log(plan.getAttribute("id"));
+
+        // 태그의 속성을 설정하는 메소드(표준, 비표준 모두)
+        plan.parentElement.setAttribute("id", "content");
+        plan.setAttribute("class", "plan");
+        plan.setAttribute("value", "javascript-study");
+
+        // 태그의 속성을 삭제
+        plan.parentElement.removeAttribute("id");
+        plan.removeAttribute("class");
+        plan.removeAttribute("value");
+
+        plan.children[3].setAttribute("data-study", "waiting");
+        plan.children[4].setAttribute("data-study", "waiting");
+        console.log(plan.children[3].dataset);
+
+        let waiting = document.querySelectorAll("#plan > li:not([data-study])");
+        console.log(waiting);
+
+        for(li of waiting) {
+            // li.setAttribute("data-study", "studying");
+            li.dataset.study = "studying";
+        }
+
+    </script>
+</body>
+</html>

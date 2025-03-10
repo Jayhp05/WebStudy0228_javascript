@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>요소 노드를 추가, 수정, 삭제하기</title>
+    <script>	
+        // document.addEventListener("DomContentLoaded", function() {
+
+        // })
+        // window.onload = function() { }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const plan = document.querySelector("#plan");
+
+            const li1 = document.createElement("li"); // ==> <li> </li>
+            li1.textContent = "오라클 SQL 스터디 준비" // ==> <li>오라클 SQL 스터디 준비</li>
+            plan.append(li1);
+
+
+            // 1. 버튼 클리되면 - 이벤트 리스너 등록
+            const btn1 = document.querySelector("#input-plan-btn");
+            btn1.addEventListener("click", () => {
+                // 2. text 상자에 입력된 값을 읽어온다
+                const input = document.querySelector("#input-plan");
+
+                // 3. 값이 입력되지 않았거나 5자 미만이면, 입력해달라고 경고 창 띄우기.
+                if(input.value.length < 5) {
+                    alert("계획은 5자 이상 입력해 주세요!");
+
+                    input.value = "";
+                    input.focus();
+
+                    return false;
+                }
+                // 4. 값이 입력되었으면 프로그래밍 스터디 계획에 추가한다. (프로그래밍 스터디 계획에 맨 뒤에 추가)
+                else {
+                    const ulPlan = document.querySelector("#plan");
+                    const liPlan = document.createElement("li");
+                    liPlan.textContent = input.value;
+                    ulPlan.append(liPlan);
+                    input.value = "";
+                }
+            }); // End btn1.addEventListener()
+
+            const li2 = li1.cloneNode(true);
+            li2.textContent = "JavaScript 제어문 복습";
+            plan.prepend(li2);
+
+            const li3 = li2.cloneNode(true);
+            li3.textContent = "함수 만들기 집중 공략";
+            const planChild1 = plan.children[1];
+            planChild1.before(li3);
+
+            plan.firstElementChild.remove();
+            // 여기까지 생성, 추가, 삭제
+
+            // 지금부터 복제 또는 그대로 다른쪽으로 이동
+            const done = document.querySelector("#done");
+            // 맨 뒤 자식관련 = done.append(plan.lastElementChild);
+            done.prepend(plan.firstElementChild);
+          
+            done.children[1].before(plan.firstElementChild);
+            done.children[1].after(plan.firstElementChild);
+            done.children[1].after(plan.children[1]);
+        })
+
+    </script>
+</head>
+<body>
+	<div id="container">
+		<div class="header">
+			<h1>DOM Tree</h1>
+		</div>		
+        <div>
+            <input type="text" name="input-plan" id="input-plan">
+            <input type="button" value="계획입력" id="input-plan-btn">
+        </div>
+		<div class="content">
+			<!-- 앞으로 스터디 할 목록 -->
+			<h2>프로그래밍 스터디 계획</h2>
+			<ul id="plan">
+				<li class="plan-list">JavaScript 함수</li>
+				<li class="plan-list">JavaScript DOM</li>
+				<li class="plan-list">JavaScript Event</li>
+				<li class="plan-list">jQuery 함수 선택자</li>					
+				<li class="plan-list">jQuery Effect</li>
+			</ul>
+		</div>
+		<div class="content">
+			<!-- 완료된 스터디 목록 -->
+			<h2>프로그래밍 스터디 완료</h2>
+			<ul id="done">
+				<li class="done-list">HTML 기본 태그</li>
+				<li class="done-list">HTML5 시멘틱 태그</li>
+				<li class="done-list">CSS3 선택자</li>
+				<li class="done-list">CSS3 박스모델</li>
+				<li class="done-list">JavaScript 제어문</li>
+			</ul>
+		</div>
+	</div>		
+</body>
+</html>
