@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 핸들러 등록하기</title>
+    <style>
+        div {
+            width: 500px;
+            height: 100px;
+            margin-top: 30px;		
+            overflow: auto;
+            border: 2px solid salmon;
+        }
+
+        .effect {
+            background-color: green;
+            color: yellow;
+        }
+    </style>
+    <script>
+        function btnClick(e) {
+            console.log("표준 이벤트 핸들러");
+            console.log(e.target);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const btn1 = document.querySelector("#btn1");
+            btn1.onclick = function(e) {
+                console.log("고전 이벤트 핸들러");
+                // btn1.onclick = null;
+            }
+
+            btn1.onclick = function(e) {
+                console.log("btn1 클릭됨");
+                console.log(e.target);
+            }
+
+            const btn2 = document.querySelector("#btn2");
+            // btn2.addEventListener("click", function() {});
+            // btn2.addEventListener("click", () => {});
+            btn2.addEventListener("click", btnClick);
+        });
+
+    </script>
+
+</head>
+<body>	
+	<button id="btn1">고전 이벤트</button>
+	<button id="btn2" onclick="btnClick();">표준 이벤트</button>
+	<!--  
+		HTML 태그에서 직접 이벤트를 다루는 인라인 이벤트 모델은 요즘 잘 사용되지
+		않는 방식으로 이 방식은 HTML 코드와 자바스크립트 코드가 뒤섞여서 코드의
+		가독성이 떨어지고 협업이나 유지보수에도 좋지 않은 방식이다.
+	-->
+	<button onclick="alert('인라인 이벤트 핸들러');">인라인 이벤트</button>
+	<div id="result"></div>
+</body>
+</html>
