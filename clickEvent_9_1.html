@@ -1,0 +1,100 @@
+<!-- 
+    ----------------------------------------------------------------------------------------------
+        다음과 같이 화면을 구성하고 스터디가 완료된 항목을 마우스로 클릭하면 아래 두 번째 그림과 같
+        이 클릭된 항목은 텍스트를 흐리게 표시하고 텍스트에 취소선과 완료라는 문구가 추가되도록 작성하
+        고 완료 처리된 항목에 마우스를 클릭하면 다시 원래대로 표시 될 수 있도록 프로그램을 작성하시오.
+        이 기능은 항목이 처음 클릭되면 완료로 표시되고 다시 클릭되면 원래대로 표시되고 또 다시 클
+        릭되면 완료로 표시되고 다시 클릭되면 원래대로 표시되는 토글 동작 되도록 구현하면 됩니다. 
+    ----------------------------------------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 클릭 이벤트 활용</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            text-align: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        #container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            margin: auto;
+        }
+
+        h2 {
+            color: blue;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            padding-left: 50px;
+            border-bottom: 2px solid #ccc;
+            text-align: left;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        /* 클릭하면 완료 상태로 변경하는 css */
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .done::after {
+            content: " - 완료";
+            color: red;
+        }
+    </style>
+    <script>
+
+        function toggleDone(e) {
+            e.target.classList.toggle("done");
+        }
+    
+        function loadAct() {
+            const listItems = document.querySelectorAll(".plan-list"); // 모든 리스트 항목 가져오기
+            listItems.forEach(item => {
+                item.addEventListener("click", toggleDone); // 각 항목에 클릭 이벤트 추가
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadAct);
+    </script>
+    
+</head>
+<body>	
+    <div id="container">
+        <div class="content">
+            <h2>프로그래밍 스터디 계획</h2>
+            <ul id="plan">
+                <li class="plan-list">JavaScript 함수</li>
+                <li class="plan-list">JavaScript DOM</li>
+                <li class="plan-list">JavaScript Event</li>
+                <li class="plan-list">jQuery 함수 선택자</li>					
+                <li class="plan-list">jQuery Effect</li>
+            </ul>
+        </div>
+    </div>		
+</body>
+</html>
