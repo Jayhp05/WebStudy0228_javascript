@@ -15,75 +15,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마우스 클릭 이벤트 활용</title>
     <style>
-        .content {
-            width: 400px;
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            text-align: center;
+            height: 100vh;
+            background-color: #f9f9f9;
         }
 
-        li.done {
+        #container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgb(145, 145, 145);
+            text-align: center;
+            width: 320px;
+            margin: auto;
+        }
+
+        h1 {
+            color: blue;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .text_li {
+            width: 250px;
+            margin: auto;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            border-bottom: 2px solid #ccc;
+            margin: auto;
+            width: 250px;
+        }
+
+        li {
+            padding: 10px;
+            padding-left: 50px;
+            border-bottom: 2px solid #ccc;
+            text-align: left;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        /* 클릭하면 완료 상태로 변경하는 css */
+        .done {
             text-decoration: line-through;
-            background-color: #EAEAEA;
+            color: gray;
         }
 
-        li.done::after {
-            content :  " - 1차 완료";
+        .done::after {
+            content: " - 완료";
             color: red;
         }
 
-        li.studying {		
-            background-color: #FFEAEA;
-        }
-
-        li.studying::after {
-            content :  " - 진행중";
-            color: blue;
-        }
     </style>
+    <script>
+ 
+        function toggleDone(e) {
+            e.target.classList.toggle("done");
+        }
+    
+        function loadAct() {
+            const listItems = document.querySelectorAll(".plan-list"); // 모든 리스트 항목 가져오기
+            listItems.forEach(item => {
+                item.addEventListener("click", toggleDone); // 각 항목에 클릭 이벤트 추가
+            });
+        }
 
+        document.addEventListener("DOMContentLoaded", loadAct);
+
+    </script>
+     
 </head>
 <body>	
     <div id="container">
-		<div class="header">
-			<h1>DOM Tree</h1>
-		</div>		
-		<div class="content">
-			<!-- 앞으로 스터디 할 목록 -->
-			<h2>프로그래밍 스터디 계획</h2>
-			<ul id="plan">
-				<li class="plan-list">JavaScript 함수</li>
-				<li class="plan-list">JavaScript DOM</li>
-				<li class="plan-list">JavaScript Event</li>
-				<li class="plan-list done">jQuery 함수 선택자</li>					
-				<li class="plan-list">jQuery Effect</li>
-			</ul>
-		</div>
-		<div class="content">
-			<!-- 완료된 스터디 목록 -->
-			<h2>프로그래밍 스터디 완료</h2>
-			<ul id="done">
-				<li class="done-list">HTML 기본 태그</li>
-				<li class="done-list">HTML5 시멘틱 태그</li>
-				<li class="done-list">CSS3 선택자</li>
-				<li class="done-list">CSS3 박스모델</li>
-				<li class="done-list">JavaScript 제어문</li>
-			</ul>
-		</div>
-        <button id="btn">클래스 토글</button>
-	</div>		
-    <script>
-        const plan = document.querySelector("#plan");
-        
-        plan.children[0].classList.add("done");
-        plan.children[0].classList.add("test1", "test2");
-        plan.children[0].classList.replace("done", "studying");
-        plan.children[0].classList.remove("test1", "test2");
-        plan.children[0].classList.toggle("done");
-        
-        const btn = document.querySelector("#btn");
-        btn.addEventListener("click", () => {
-            const plan1 = document.querySelector("#plan");
-            plan.children[2].classList.toggle("done");
-        });
-
-    </script>
+        <div class="content">
+            <h1>프로그래밍 스터디 계획</h1>
+            <ul id="plan">
+                <div class="text_li">
+                    <li class="plan-list">JavaScript 함수</li>
+                    <li class="plan-list">JavaScript DOM</li>
+                    <li class="plan-list">JavaScript Event</li>
+                    <li class="plan-list">jQuery 함수 선택자</li>
+                    <li class="plan-list">jQuery Effect</li>
+                </div>
+            </ul>
+        </div>
+    </div>		
 </body>
 </html>
